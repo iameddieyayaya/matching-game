@@ -49,5 +49,9 @@ body {
 }
 
 .front-face {
+  background: hsl(300, 98%, 23%);
+}
+
+.front-face {
   transform: rotateY(180deg);
 }
