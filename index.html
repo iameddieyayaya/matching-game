@@ -1,100 +1,158 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Memory Game</title>
-
-    <link rel="stylesheet" href="style.css" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Mix N Match</title>
   </head>
   <body>
-    <section>
-      <div class="memory-game">
-        <div class="memory-card" data-nord="helm">
-          <img class="front-face" src="img/brutal-helm.svg" alt="helm" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
+    <h1 class="page-title">Mix N Match</h1>
+    <div class="overlay-text visible">
+      Click to Start
+    </div>
+    <div id="game-over-text" class="overlay-text">
+      GAME OVER
+      <span class="overlay-text-small">Click to Restart</span>
+    </div>
+    <div id="victory-text" class="overlay-text">
+      VICTORY<span class="overlay-text-small">Click to Restart</span>
+    </div>
+    <div class="game-container">
+      <div class="game-info-container">
+        <div class="game-info">Time: <span id="time-remaining">100</span></div>
+        <div class="game-info">Flips: <span id="flips">0</span></div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
         </div>
-        <div class="memory-card" data-nord="helm">
-          <img class="front-face" src="img/brutal-helm.svg" alt="helm" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="death juice">
-          <img class="front-face" src="img/death-juice.svg" alt="death juice" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="death juice">
-          <img class="front-face" src="img/death-juice.svg" alt="death juice" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="drakkar dragon">
-          <img
-            class="front-face"
-            src="img/drakkar-dragon.svg"
-            alt="drakkar dragon"
-          />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="drakkar dragon">
-          <img
-            class="front-face"
-            src="img/drakkar-dragon.svg"
-            alt="drakkar dragon"
-          />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="drakkar">
-          <img class="front-face" src="img/drakkar.svg" alt="drakkar" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="drakkar">
-          <img class="front-face" src="img/drakkar.svg" alt="drakkar" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="dwarf">
-          <img class="front-face" src="img/dwarf-face.svg" alt="dwarf" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="dwarf">
-          <img class="front-face" src="img/dwarf-face.svg" alt="dwarf" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="fish monster">
-          <img
-            class="front-face"
-            src="img/fish-monster.svg"
-            alt="fish monster"
-          />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="fish monster">
-          <img
-            class="front-face"
-            src="img/fish-monster.svg"
-            alt="fish monster"
-          />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="medusa">
-          <img class="front-face" src="img/medusa-head.svg" alt="medusa" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="medusa">
-          <img class="front-face" src="img/medusa-head.svg" alt="medusa" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="mite">
-          <img class="front-face" src="img/mite-alt.svg" alt="mite" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
-        </div>
-        <div class="memory-card" data-nord="mite">
-          <img class="front-face" src="img/mite-alt.svg" alt="mite" />
-          <img class="back-face" src="img/flame.svg" alt="flame" />
+        <div class="card-front card-face">
+          <img class="card-value" src="/img/brutal-helm.svg" />
         </div>
       </div>
-    </section>
-
-    <script src="scripts.js"></script>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="/img/brutal-helm.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/death-juice.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/death-juice.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/drakkar-dragon.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/drakkar-dragon.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/drakkar.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/drakkar.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/dwarf-face.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/dwarf-face.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/fish-monster.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/fish-monster.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/medusa-head.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/medusa-head.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/mite-alt.svg" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="flame" src="img/flame.svg" />
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="img/mite-alt.svg" />
+        </div>
+      </div>
+    </div>
+    <script src="scripts.js" async></script>
   </body>
 </html>

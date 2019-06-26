@@ -1,57 +1,185 @@
+@font-face {
+  font-family: 'Viking';
+  src: url('Fonts/Viking Hell.otf');
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100vh;
+}
+
 body {
-  height: 100vh;
   background: rgb(0, 75, 75);
 }
 
-.memory-game {
-  width: 650px;
-  margin: 0 auto;
+.page-title {
+  color: #be02be;
+  font-weight: normal;
+  text-align: center;
+  font-size: 3em;
+  font-family: Viking, serif;
+}
+
+.game-info-container {
+  grid-column: 1 / -1;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.game-info {
+  color: white;
+  font-size: 1.5em;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  margin: 10px;
+  justify-content: center;
   perspective: 1000px;
 }
 
-.memory-card {
-  width: 150px;
-  height: 200px;
-  margin: 5px;
+.card {
   position: relative;
-  transform: scale(1);
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-  border: 2px solid #be02be;
+  height: 155px;
+  width: 125px;
 }
 
-.memory-card:active {
-  transform: scale(0.97);
-  transition: transform 0.2s;
+.card:hover {
+  cursor: pointer, auto;
 }
 
-.memory-card.flip {
-  transform: rotateY(180deg);
-}
-
-.front-face,
-.back-face {
+.card-face {
+  position: absolute;
   width: 100%;
   height: 100%;
-  padding: 20px;
-  position: absolute;
-  border-radius: 5px;
-  background: #4b004b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
   backface-visibility: hidden;
+  border-radius: 12px;
+  border-width: 1px;
+  border-style: solid;
+  transition: transform 500ms ease-in-out;
 }
 
-.front-face {
-  background: hsl(300, 98%, 23%);
+.card.visible .card-back {
+  transform: rotateY(-180deg);
 }
 
-.front-face {
+.card.visible .card-front {
+  transform: rotateY(0);
+}
+
+.card.matched .card-value {
+  animation: dance 1.8s ease-in-out 500ms;
+}
+
+@keyframes dance {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  35% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(180deg);
+  }
+}
+
+.overlay-text {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  color: #be02be;
+  font-family: Viking, serif;
+}
+
+.overlay-text-small {
+  font-size: 0.3em;
+}
+
+.overlay-text.visible {
+  display: flex;
+  flex-direction: column;
+  animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 10em;
+  }
+}
+
+.card-front {
+  background-color: #f701f7;
+  border-color: #333;
   transform: rotateY(180deg);
+}
+
+.card-front:hover .card-value {
+  transform: scale(0.9);
+}
+
+.card-value {
+  transition: transform 100ms ease-in-out;
+  transform: scale(0.8);
+}
+
+.card-back {
+  background-color: black;
+  border-color: #be02be;
+}
+
+.flame {
+  align-self: flex-start;
+  transform: translateY(-10px);
+  transition: transform 100ms ease-in-out;
+}
+
+.card-back:hover .flame {
+  transform: translateY(0);
+}
+
+.card-back:hover .flame {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .game-container {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  .game-info-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @keyframes overlay-grow {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.8);
+      font-size: 5em;
+    }
+  }
 }
